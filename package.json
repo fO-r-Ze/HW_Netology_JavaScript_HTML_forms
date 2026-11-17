@@ -10,7 +10,8 @@
     "test": "jest",
     "test:e2e": "jest --config jest.e2e.config.js",
     "serve:dist": "http-server dist -p 9000 -s",
-    "test:all": "npm run build && concurrently --kill-others \"npm run serve:dist\" \"wait-on http://localhost:9000 && npm run test:e2e\"",
+    "pre:test:all": "kill-port 9000 || exit 0",
+    "test:all": "npm run pre:test:all && npm run build && concurrently --kill-others --success first \"npm run serve:dist\" \"wait-on http://localhost:9000 && npm run test:e2e\"",
     "lint": "eslint src e2e"
   },
   "devDependencies": {
