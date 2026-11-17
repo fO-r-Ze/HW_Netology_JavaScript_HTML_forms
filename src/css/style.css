@@ -1,0 +1,100 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background: #f0f2f5;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.btn {
+  padding: 8px 16px;
+  font-size: 16px;
+  border: 1px solid #6c757d;
+  border-radius: 4px;
+  background: #fff;
+  color: #212529;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn:hover {
+  background: #e2e6ea;
+}
+
+/* ---------- Popover ---------- */
+
+.popover {
+  max-width: 276px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.3rem;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+  z-index: 1060;
+  font-size: 0.875rem;
+  text-align: left;
+
+  /* Анимация появления */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.popover--visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.popover__arrow {
+  position: absolute;
+  bottom: -11px;
+  left: 50%;
+  margin-left: -11px;
+  width: 0;
+  height: 0;
+  /* Сам элемент — это серый треугольник (рамка стрелки) */
+  border-left: 11px solid transparent;
+  border-right: 11px solid transparent;
+  border-top: 11px solid rgba(0, 0, 0, 0.2);
+}
+
+/* Белая заливка поверх серого треугольника */
+.popover__arrow::after {
+  content: '';
+  position: absolute;
+  top: -11px;
+  left: -10px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #fff;
+}
+
+.popover__title {
+  padding: 0.5rem 0.75rem;
+  background: #f7f7f7;
+  border-bottom: 1px solid #ebebeb;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 0.3rem 0.3rem 0 0;
+}
+
+.popover__content {
+  padding: 0.5rem 0.75rem;
+  color: #212529;
+  line-height: 1.4;
+}
